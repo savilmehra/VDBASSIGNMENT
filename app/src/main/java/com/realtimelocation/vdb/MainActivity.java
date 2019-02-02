@@ -25,20 +25,18 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
-
-
     private RecyclerView rvItem;
     private Context context;
     private ProgressBar pb;
     private AdapterForRecyclerview mAdapter;
     private String URL = "https://api.github.com/users/JakeWharton/";
+
     private int counter = 1;
     private int conter_ = 0;
     List<JakesEntity> jakesEntityIntial;
     private int listSize = 0;
     private RoomDatabase db;
     private boolean isSaveDataComplete;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
