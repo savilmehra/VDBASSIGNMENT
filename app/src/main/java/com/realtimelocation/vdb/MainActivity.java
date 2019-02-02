@@ -41,8 +41,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         context = this;
-        if (new TinyDB(context).getInt("counter") != 0)
-            counter = new TinyDB(context).getInt("counter");
         setContentView(R.layout.activity_main);
         db = RoomDatabase.getAppDatabase(context);
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -86,7 +84,10 @@ public class MainActivity extends AppCompatActivity {
                         } else {
                             counter = counter + 1;
                             new TinyDB(context).putInt("counter", counter);
+                            if(jakesEntityIntial!=null)
                             jakesEntityIntial.addAll(jakesEntity);
+                            else
+                                jakesEntityIntial= jakesEntity;
                             mAdapter.notifyItemInserted(jakesEntityIntial.size() - 1);
                             if (listSize != 0)
                                 rvItem.smoothScrollToPosition(listSize);
@@ -116,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
                                     setmAdapter(counter);
                                     ViewGroup.MarginLayoutParams marginLayoutParams =
                                             (ViewGroup.MarginLayoutParams) rvItem.getLayoutParams();
-                                    marginLayoutParams.setMargins(0, 0, 0, 80);
+                                    marginLayoutParams.setMargins(0, 0, 0, 100);
                                     rvItem.setLayoutParams(marginLayoutParams);
                                     listSize = jakesEntityIntial.size();
                                 }
